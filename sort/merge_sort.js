@@ -32,7 +32,8 @@ const merge = (array, p, q, r) => {
 }
 
 /**
- * 归并排序
+ * 归并排序 
+ * 时间复杂度 O(nlgn)
  * @param {array} array 
  * @param {number} p 
  * @param {number} r 
