@@ -5,15 +5,15 @@ const exchange = (A, p, r) => {
 }
 
 const partion = (A, p, r) => {
-  let x = A[r], i = p - 1
-  for (let j = p; j <= r - 1; j++) {
+  let x = A[p], i = p
+  for (let j = p + 1; j <= r; j++) {
     if (A[j] <= x) {
       i++
       exchange(A, i, j)
     }
   }
-  exchange(A, i + 1, r)
-  return i + 1
+  exchange(A, p, i)
+  return i
 }
 
 const quickSort = (A, p, r) => {
@@ -27,7 +27,7 @@ const quickSort = (A, p, r) => {
   }
 }
 
-const A = [1, 2, 8, 12, 4, 9, 23, 16, 3, 57, 2, 19, 3, 43, 96, 46, 23, 46, 76, 12, 34, 16, 89, 2, 5, 9, 13]
+const A = [0, 1, 2, 8, 12, 4, 9, 23, 16, 3, 57, 2, 19, 3, 43, 96, 46, 23, 46, 76, 12, 34, 16, 89, 2, 5, 9, 13]
 
 console.log(quickSort(A, 0, A.length - 1))
 
