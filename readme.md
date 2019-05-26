@@ -1,4 +1,4 @@
-## JavaScript 算法实现
+## 算法：JavaScript实现
 
 #### 排序
 - 插入排序
