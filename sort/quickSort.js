@@ -1,9 +1,21 @@
+/**
+ * 数组交换
+ * @param {array} A 
+ * @param {number} p 
+ * @param {number} r 
+ */
 const exchange = (A, p, r) => {
   let temp = A[r]
   A[r] = A[p]
   A[p] = temp
 }
 
+/**
+ * 划分
+ * @param {array} A 
+ * @param {number} p 
+ * @param {number} r 
+ */
 const partion = (A, p, r) => {
   let x = A[p], i = p
   for (let j = p + 1; j <= r; j++) {
@@ -16,6 +28,12 @@ const partion = (A, p, r) => {
   return i
 }
 
+/**
+ * 快速排序 时间复杂度O(nlgn)
+ * @param {array} A 
+ * @param {number} p 
+ * @param {number} r 
+ */
 const quickSort = (A, p, r) => {
   if (p < r) {
     let q = partion(A, p, r)
