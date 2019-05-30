@@ -1,4 +1,4 @@
-const priceList = [0, 1, 2, 4, 7, 9, 12, 12, 16, 17, 19, 19, 20, 20, 22, 27, 28, 29, 29, 28, 30, 35, 37, 38, 39, 50, 55, 52, 58, 60, 99, 102, 105]
+const priceList = [0, 3, 24, 31, 5, 6, 12, 12, 16, 17, 19, 19, 20, 20, 22, 27, 28, 29, 29, 28, 30, 35, 37, 38, 39, 50, 55, 52, 58, 60, 99, 102, 105]
 
 //长度为n英寸的钢条共有2^(n-1)种不同的切割方案
 
@@ -69,3 +69,39 @@ const BOTTOM_UP_CUT_ROD = (p, n) => {
   return r[n]
 }
 console.log(BOTTOM_UP_CUT_ROD(priceList, 7))
+
+/**
+ * 输出最优解时的分割方案
+ * @param {*} p 
+ * @param {*} n 
+ */
+const EXTENDED_BOTTOM_UP_CUT_ROD = (p, n) => {
+  let r = [], s = []
+  r[0] = 0, s[0] = 0
+  for (let i = 1; i <= n; i ++ ) {
+    let q = - Infinity
+    for (let j = 1; j <= i; j++ ) {
+      if (q < (p[j] + r[i - j])) {
+        s[i] = j
+        q = p[j] + r[i - j]
+      }
+    }
+    r[i] = q
+  }
+  return {
+    r,
+    s
+  }
+}
+
+console.log(EXTENDED_BOTTOM_UP_CUT_ROD(priceList, 7))
+
+const PRINT_CUT_ROD_SOLUTION = (p, n ) => {
+  const {r, s} = EXTENDED_BOTTOM_UP_CUT_ROD(p, n)
+  console.log(s)
+  while (n > 0) {
+    console.log(s[n])
+    n = n - s[n]
+  }
+}
+PRINT_CUT_ROD_SOLUTION(priceList, 7)
