@@ -11,7 +11,7 @@ const exchange = (A, p, r) => {
 }
 
 /**
- * 划分
+ * 选择第一项作为主元，划分
  * @param {array} A 
  * @param {number} p 
  * @param {number} r 
@@ -29,6 +29,18 @@ const partion = (A, p, r) => {
 }
 
 /**
+ * 随机选取主元，划分
+ * @param {*} A 
+ * @param {*} p 
+ * @param {*} r 
+ */
+const partion2 = (A, p, r) => {
+  let pivot = Math.floor(Math.random() * (r - p + 1)) + p
+  exchange(A, p, pivot)
+  return partion(A, p, r)
+}
+
+/**
  * 快速排序 时间复杂度O(nlgn)
  * @param {array} A 
  * @param {number} p 
@@ -36,7 +48,7 @@ const partion = (A, p, r) => {
  */
 const quickSort = (A, p, r) => {
   if (p < r) {
-    let q = partion(A, p, r)
+    let q = partion2(A, p, r)
     quickSort(A, p, q - 1)
     quickSort(A, q + 1, r)
     return A
