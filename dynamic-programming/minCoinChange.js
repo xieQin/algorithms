@@ -1,4 +1,4 @@
-const coins = [1, 5, 10, 25]
+const coins = [1,3,4]
 
 let resMap = {}
 /**
@@ -68,5 +68,5 @@ const minCoinChangeGreedy = (money) => {
 }
 
 
-console.log(minCoinChange(78))
-console.log(minCoinChangeGreedy(78))
+console.log(minCoinChange(6))
+console.log(minCoinChangeGreedy(6))
