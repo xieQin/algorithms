@@ -22,7 +22,7 @@ const numerOfI = I => {
   return count
 }
 
-// 时间复杂度O(n)，递归解决
+// 时间复杂度O(logn)，递归解决
 const findOne2 = N => {
   let count = 0;
   let number = N + ''
