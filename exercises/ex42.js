@@ -39,4 +39,16 @@ const A = [1, -2, 3, 10, -4, 7, 2, -5]
 
 console.log(getMaxSubArray(A, 0, A.length - 1))
 
-// 动态规划
+// 自底向上的动态规划，时间复杂度O(n)
+const findMaxSubArray = A => {
+  let res = []
+  res[0] = A[0]
+  let length = A.length, num = A[0]
+  for (let i = 1; i < length; i ++) {
+    res[i] = Math.max(A[i], res[i - 1] + A[i])
+    num = Math.max(res[i - 1], res[i])
+  }
+  return num
+}
+
+console.log(findMaxSubArray(A))
