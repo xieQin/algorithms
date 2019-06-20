@@ -17,6 +17,7 @@ const getNumberTimes = (A, number) => {
   return count
 }
 
+// 二分查找，时间复杂度O（logn）
 const getNumberTimes2 = (A, number) => {
   let first = findFirstNumber(A, number, 0, A.length - 1)
   let last = findLastNumber(A, number, 0, A.length - 1)
@@ -82,5 +83,65 @@ const findLastNumber = (A, number ,p, q) => {
 const A = [1, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5]
 
 // console.log(findNumber(A, 3, 0, A.length - 1))
-console.log(getNumberTimes(A, 4))
-console.log(getNumberTimes2(A, 4))
+// console.log(getNumberTimes(A, 4))
+// console.log(getNumberTimes2(A, 4))
+
+// 题目二：0 ～ n-1中缺失的数字
+// 一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围0～n-1中
+// 在范围0～n-1的n个数字中，只有一个数字不在该数组中，求该数字
+
+const findLostNumber = (A, p, q) => {
+  if (q < p) {
+    return A[q] + 1
+  }
+  let x = Math.floor((q - p + 1) / 2) + p
+  if (x == A[x]) {
+    return findLostNumber(A, x + 1, q)
+  } else {
+    if ( (x - 1) == A[x - 1]) {
+      return x
+    } else {
+      return findLostNumber(A, p, x - 1)
+    }
+  }
+}
+
+const B = [0, 1, 2, 3, 4, 5, 6, 7, 9]
+
+// console.log(findLostNumber(B, 0, B.length - 1))
+
+// 题目三：数组中数字和下标相同的元素
+// 假设一个单调递增数组中的每个元素都是整数且唯一
+// 编写一个函数，找出数组中任意一个数字与下标相同的元素
+// 例如，输入数组【-3，-1，1，3，5】，输出【3】
+
+// 顺序查找O（n）
+const findEqualNumber = A => {
+  for (let i = 0; i < A.length; i ++) {
+    if (i == A[i]) {
+      return {
+        i: A[i]
+      }
+    }
+  }
+  return -1
+}
+
+// 二分查找O（logn）
+const findEqualNumber2 = (A, p, q) => {
+  if (q < p) {
+    return -1
+  }
+  let x = Math.floor((q - p + 1) / 2) + p
+  if (x == A[x]) {
+    return  A[x]
+  } else if (x > A[x]){
+    return findEqualNumber2(A, x + 1, q)
+  } else {
+    return findEqualNumber2(A, p, x - 1)
+  }
+}
+
+const C = [-3, -1, 1, 2, 4]
+
+console.log(findEqualNumber2(C, 0, C.length - 1))
