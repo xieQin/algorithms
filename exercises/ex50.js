@@ -15,3 +15,5 @@ const findFirstLetter = string => {
 }
 
 console.log(findFirstLetter('abaccdef'))
+
+// 字符流中第一个只出现一次的字符
