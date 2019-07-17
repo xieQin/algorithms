@@ -14,8 +14,8 @@ var threeSum = function (nums) {
     let target = 0 - nums[i],j = 0
     while (j < nums.length) {
       let r = nums.indexOf(target - nums[j])
-      if (j != i && r > -1 && r != i) {
-        let res = [nums[i], nums[j], nums[r]].sort((a, b) => a - b)
+      if (j != i && r > -1 && r != i && r != j) {
+        let res = [nums[i], nums[j], nums[r]].sort((a, b) => a - b).join(',')
         if (!sumResult.has(res)) {
           sumResult.add(res)
         }
@@ -23,17 +23,27 @@ var threeSum = function (nums) {
       j ++
     }
   }
-  return sumResult
+  return [...sumResult].map(item => item.split(',').map(num => parseInt(num, 0)))
 };
 
-const a = new Set()
+// console.log(threeSum(nums))
 
-a.add([1, 2])
-a.add([1,2])
-a.add(1)
+const generateRandomArray = (start, end, length) => {
+  let randomArray = new Set()
+  recursiveGenArray(randomArray, start, end, length)
+  return [...randomArray]
+}
 
-console.log(a)
+const generateNum = (start, end) => Math.ceil(Math.random() * (end - start + 1)) + start
 
-const nums = [-1, 0, 1, 2, -1, -4]
+const recursiveGenArray = (set, start, end, length) => {
+  if (length > 0 && set.size < length ) {
+    let num = generateNum(start, end)
+    if (!set.has(num)) {
+      set.add(num)
+    }
+    recursiveGenArray(set, start, end, length)
+  }
+}
 
-console.log(threeSum(nums))
+console.log(generateRandomArray(2, 32, 5))
