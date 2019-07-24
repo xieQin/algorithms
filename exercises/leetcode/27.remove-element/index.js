@@ -3,21 +3,17 @@
  * @param {number} val
  * @return {number}
  */
-var removeElement = function(nums, val) {
-    if (!Array.isArray(nums)) {
-      return nums
+var removeElement = function (nums, val) {
+  let i = 0;
+  for (let j = 0; j < nums.length; j++) {
+    if (nums[j] != val) {
+      nums[i] = nums[j];
+      i++;
     }
-    let i = 0
-    while (i < nums.length) {
-      if (val === nums[i]) {
-        nums.splice(i, 1)
-      } else {
-        i ++
-      }
-    }
-    return nums.length
+  }
+  return i
 };
 
-const A = [1,2,3,3,2,1,5,2,2,1]
+const A = [3, 2, 2, 3]
 
-console.log(removeElement(A, 2))
+console.log(removeElement(A, 3))
