@@ -40,7 +40,7 @@ const merge = (array, p, q, r) => {
  */
 const mergeSort = (array, p, r) => {
   if (p < r) {
-    let q = Math.floor((p + r) / 2)
+    let q = Math.floor(p + (r - p) / 2)
     mergeSort(array, p, q)
     mergeSort(array, q + 1, r)
     return merge(a, p, q, r)

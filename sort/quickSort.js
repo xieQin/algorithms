@@ -19,7 +19,7 @@ const exchange = (A, p, r) => {
 const partion = (A, p, r) => {
   let x = A[p], i = p
   for (let j = p + 1; j <= r; j++) {
-    if (A[j] <= x) {
+    if (A[j] < x) {
       i++
       exchange(A, i, j)
     }
