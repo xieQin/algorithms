@@ -8,3 +8,8 @@ const binarySearchTree  = (key) =>{
   let rootNode = null
 }
 
+function Node (value, left, right) {
+  this.left = left
+  this.right = right
+  this.value = value
+}
