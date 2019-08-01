@@ -19,13 +19,9 @@ var convert = function(s, numRows) {
     }
     curRow += direction ? 1 : -1
   }
-  let res = ''
-  for (let i = 0; i < resArr.length; i ++) {
-    res += resArr[i].join('')
-  }
-  return res
+  return resArr.map(item => item.join('')).join('')
 };
 
-const s = 'AB'
+const s = 'ABCDEFGHIJK'
 
-console.log(convert(s, 1))
+console.log(convert(s, 3))

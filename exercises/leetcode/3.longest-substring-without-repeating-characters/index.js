@@ -3,20 +3,19 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-  if (s.length <= 1) {
-    return s.length >= 0 ? s.length : 0
-  }
-  let max = 1, pre = s.substr(0, 1)
-  for (let i = 1; i < s.length; i ++) {
-    let index = pre.indexOf(s[i])
-    if (index >= 0) {
-      pre = pre.substr(index + 1) + s[i]
+  if (typeof s !== 'string') return 0
+  let length = 0, index = 0, pre = ''
+  while(index < s.length) {
+    let isDuplicate = pre.indexOf(s[index])
+    if (isDuplicate > - 1) {
+      pre = pre.substr(isDuplicate + 1) + s[index]
     } else {
-      pre = pre + s[i]
+      pre += s[index]
     }
-    max = Math.max(max, pre.length)
+    length = Math.max(length, pre.length)
+    index ++
   }
-  return max
+  return length
 };
 
 const s = ""
