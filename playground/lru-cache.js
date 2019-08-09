@@ -1,0 +1,6 @@
+/**
+ * LRU Cache
+ */
+function LRU () {
+
+}
