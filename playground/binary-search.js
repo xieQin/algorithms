@@ -5,7 +5,7 @@ const A = [1, 2, 4, 5, 6, 7, 9, 12, 15, 17, 19, 23, 28, 31, 35, 36, 44]
  * @param {Number[]} A 
  * @param {Number} target 
  */
-function divideSearch(A, target) {
+function binarySearch(A, target) {
   if (A.length == 0) return -1
   let start = 0, end = A.length - 1
   while (start <= end) {
