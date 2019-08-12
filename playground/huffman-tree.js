@@ -2,7 +2,7 @@
  * 定义Huffman树节点
  * @param {Number} data 
  */
-function TreeNode (data) {
+function TreeNode(data) {
   this.data = data
   this.left = null
   this.right = null
@@ -13,7 +13,7 @@ function TreeNode (data) {
  * @param {Number[]} A
  * @return {TreeNode} 
  */
-function generateHuffmanTree (A) {
+function generateHuffmanTree(A) {
   if (!Array.isArray(A)) return null
   if (A.length <= 0) return null
   let nodes = []

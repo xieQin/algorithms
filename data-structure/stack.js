@@ -1,35 +1,35 @@
 class Stack {
-  constructor () {
+  constructor() {
     this.items = []
   }
 
-  push (...element) {
+  push(...element) {
     for (let i of element) {
       this.items.push(i)
     }
   }
 
-  pop () {
+  pop() {
     this.items.pop()
   }
 
-  peek () {
+  peek() {
     return this.items[this.items.length - 1]
   }
 
-  isEmpty () {
+  isEmpty() {
     return this.items.length == 0
   }
 
-  clear () {
+  clear() {
     this.items = []
   }
 
-  size () {
+  size() {
     return this.items.length
   }
 
-  print () {
+  print() {
     console.log(this.items.join(','))
   }
 }
